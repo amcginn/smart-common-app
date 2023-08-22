@@ -12,7 +12,7 @@ function initializeSearch(smartContext) {
     let tenant_key = smartContext.state.tokenResponse.tenant;
     let patient_id = smartContext.patient.id;
     let encntr_id = smartContext.encounter.id;
-    let provider_id = smartContext.state.tokenResponse.fhirUser.split('/')[1];
+    let provider_id = smartContext.user.fhirUser.split('/').slice(-1);
     let username = smartContext.state.tokenResponse.username;
 
     let params = []
