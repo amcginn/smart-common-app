@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html hidden>
+<head>
+  <script src="dist/fhir-client-v2.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+
+  <link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/cerner/cerner-smart-embeddable-lib@v1.5.0/dist/css/cerner-smart-embeddable-lib-1.5.0.min.css'>
+  <style>
+    *{color:#303030; border-radius:6px;}
+    body{background:#fdfdfd; font-family:Georgia, Times, 'Times New Roman', serif;}
+    h1, h2, h3, h4, h5, h6 {font-family:'HelveticaNeue-Light', Helvetica, Arial, 'Lucida Grande', sans-serif;}
+    p,.p{background:gainsboro; margin:20px; padding:20px; font-size:13px;}
+    textarea{width:95vw; height:30vh;}
+    pre{background:aliceblue; padding:20px; overflow-x:scroll;}
+    button{background:#69b5ce; border-color:#303030; font-weight:bold; border-width:thin;}
+    .label{font-weight:bold;}
+    #app-id-input {
+        border: slategrey 2px solid;
+        border-radius: 3px;
+        margin: .25em 1em;
+    }
+    #search-btn {
+        background-color: steelblue;
+        padding: .5em 1em;
+        border: lightsteelblue 2px solid;
+        border-radius: 3px;
+    }
+  </style>
+  <script>
+    let params = new URLSearchParams(document.location.search);
+    let error_uri = params.get('error_uri');
+    if (error_uri) {
+      console.log('error: ' + params.get('error'));
+      console.log('error_uri: ' + error_uri);
+
+      document.location.href = error_uri;
+    }
+  </script>
+</head>
+
+<body>
+  <div id='context_section'>
+    <span>App ID: </span>
+    <div id="app-id-input" contenteditable>
+
+    </div>
+    <div id="search-btn">
+      Launch app
+    </div>
+  </div>
+
+  <script>
+    function populateState(smart) {
+      // populate clinical (patient, encounter, user)
+      document.getElementById('patient_id').innerText = smart.patient.id;
+      document.getElementById('encounter_id').innerText = smart.encounter.id;
+      document.getElementById('fhirUser').innerText = smart.user.fhirUser;
+
+      // pull/populate state values
+      let state = smart.state;
+      document.getElementById('state_authorizeUri').innerText = state.authorizeUri;
+      document.getElementById('state_tokenUri').innerText = state.tokenUri;
+      document.getElementById('state_clientId').innerText = state.clientId;
+      document.getElementById('state_key').innerText = state.key;
+      document.getElementById('state_redirectUri').innerText = state.redirectUri;
+      document.getElementById('state_registrationUri').innerText = state.registrationUri;
+      document.getElementById('state_scope').innerText = state.tokenResponse.scope;
+      document.getElementById('state_serverUrl').innerText = state.serverUrl;
+      document.getElementById('state_smart_style_url').innerText = state.tokenResponse.smart_style_url;
+      document.getElementById('state_tenant').innerText = state.tokenResponse.tenant;
+      document.getElementById('state_username').innerText = state.tokenResponse.username;
+      document.getElementById('state_access_token').innerText = (state.tokenResponse.access_token && state.tokenResponse.access_token.length > 0 ? 'it\'s here :)' : 'missing!');
+
+      let state_copy = JSON.parse(JSON.stringify(state));
+      if (state_copy.tokenResponse.access_token) {
+        state_copy.tokenResponse.access_token = 'REDACTED';
+      }
+      if (state_copy.tokenResponse.id_token) {
+      state_copy.tokenResponse.id_token = 'REDACTED';
+      }
+      if (state_copy.tokenResponse.access_token) {
+        state_copy.tokenResponse.refresh_token = 'REDACTED';
+      }
+      document.getElementById('raw_state').innerText = JSON.stringify(state_copy, null, 2);
+    }
+  </script>
+  </script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/cerner/cerner-smart-embeddable-lib@v1.5.0/dist/js/cerner-smart-embeddable-lib-1.5.0.min.js"></script>
+</body>
+
+</html>

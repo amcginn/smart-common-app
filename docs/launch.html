@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html hidden lang="en">
+
+<head>
+  <title>SMART Common App Launch</title>
+  <script src='dist/fhir-client-v2.js'></script>
+  <link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/cerner/cerner-smart-embeddable-lib@v1.5.0/dist/css/cerner-smart-embeddable-lib-1.5.0.min.css'>
+</head>
+
+<body>
+  <p>Hello, I am the SMART launch URI page!</p>
+
+  <script>
+    let auth_req_info = {
+        'client_id': 'b7033e95-3b45-4d96-9b3d-79ea367cd714',
+        'scope': 'openid fhirUser online_access launch',
+        'redirect_uri': 'https://amcginn.github.io/smart-common-app/app.html'
+      }
+    
+    FHIR.oauth2.authorize(auth_req_info);
+  </script>
+
+  <script type="text/javascript" src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cerner/cerner-smart-embeddable-lib@v1.5.0/dist/js/cerner-smart-embeddable-lib-1.5.0.min.js"></script>
+</body>
+
+</html>

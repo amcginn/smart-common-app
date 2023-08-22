@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+  <a id="standalone-url" href="">If you want to login outside the EHR, login here!</a>
+  <p>
+    <div>
+      <span>Current location: </span><span id="current_url"></span><br/>
+      <span>No current context</span>
+    </div>
+  </p>
+  <p>
+    <div>
+      <label for="pt-select">Choose a patient:</label>
+      <select id="pt-select">
+        <option value="12724066" selected>Nancy SMART</option>
+        <option value="12724067">Joe SMART</option>
+        <option value="12724065">Wilma SMART</option>
+        <option value="12724071">Valerie SMART</option>
+        <option value="12724070">Frederick SMART</option>
+        <option value="490052523">Tim Peters</option>
+    </select>
+    </div>
+  </p>
+</body>
+<script>
+  document.getElementById('current_url').innerText = window.location.href
+</script>
+  <script>
+    const launch_server_url = 'https://smart.cerner.com/smart/ec2458f2-1e24-41c8-b71b-0e701af7583d/apps/b6a359b2-c9e1-4eaa-b543-9fb5c114582e/?username=portal&PAT_PersonId='
+    
+    function changePatient(patient_id) {
+      let standalone_url_element = document.getElementById('standalone-url');
+      standalone_url_element.href = launch_server_url + patient_id;
+      console.log('patient changed to ' + patient_id);
+    }
+    
+    const el = document.getElementById("pt-select");
+    el.addEventListener("change",
+      function () {
+        var test_patient = document.getElementById("pt-select").value;
+        changePatient(test_patient);
+      });
+    
+    changePatient(el.value);
+  </script>
+</html>
