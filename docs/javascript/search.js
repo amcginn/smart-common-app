@@ -30,7 +30,7 @@ function initializeSearch(smartContext) {
 
 
     document.getElementById('search-btn').addEventListener('click', function() {
-        let app_id = document.getElementById('app-id-input').value;
+        let app_id = document.getElementById('app-id-input').textContent;
         search(smartAppUrl, app_id)
     });
 }
