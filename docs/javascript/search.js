@@ -5,8 +5,7 @@ PROVIDER_ID_PARAM = 'USR_PersonId='
 USERNAME_PARAM = 'username='
 
 function search(smartURL, app_id) {
-    smartURL.replace('{app_id}', app_id)
-    window.href = smartURL;
+    window.href = smartURL.replace('{app_id}', app_id);
 }
 
 function initializeSearch(smartContext) {
