@@ -2,56 +2,27 @@
 <html hidden lang="en">
   <head>
     <title>SMART Common App Launch</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/">
     <script src="dist/fhir-client-v2.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-
-    <link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/cerner/cerner-smart-embeddable-lib@v1.5.0/dist/css/cerner-smart-embeddable-lib-1.5.0.min.css'>
-    <style>
-      *{color:#303030; border-radius:6px;}
-      body{background:#fdfdfd; font-family:Georgia, Times, 'Times New Roman', serif;}
-      main {
-          max-width: 60%;
-          display: flex;
-          justify-content: center;
-      }
-      #app-id-input {
-          border: slategrey 2px solid;
-          border-radius: 3px;
-          margin: .25em 1em;
-          width: 32ch;
-      }
-      #search-btn {
-          background-color: steelblue;
-          padding: .5em 1em;
-          border: lightsteelblue 2px solid;
-          border-radius: 3px;
-          font-weight: bold;
-          cursor: pointer;
-      }
-    </style>
-    <script>
-      let params = new URLSearchParams(document.location.search);
-      let error_uri = params.get('error_uri');
-      if (error_uri) {
-        console.log('error: ' + params.get('error'));
-        console.log('error_uri: ' + error_uri);
-
-        document.location.href = error_uri;
-      }
-    </script>
   </head>
   <body>
-    <main id='context_section'>
-      <span>App ID: </span>
-      <div id="app-id-input" contenteditable></div><br>
-      <div id="search-btn">
-        Launch app
+    <main>
+      <header>
+        <h2>Launch SMART app by ID</h2>
+      </header>
+      <div class="content">
+        <div class="card">
+          <div class="item">
+            <label for="app-id-input">App ID</label>
+            <input id="app-id-input" type="text">
+          </div>
+          <div class="item">
+            <div id="search-btn" class="">
+              Launch app
+            </div>
+          </div>
+        </div>
       </div>
     </main>
-    <script src="javascript/search.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/cerner/cerner-smart-embeddable-lib@v1.5.0/dist/js/cerner-smart-embeddable-lib-1.5.0.min.js"></script>
   </body>
 </html>

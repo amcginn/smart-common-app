@@ -5,7 +5,16 @@ PROVIDER_ID_PARAM = 'USR_PersonId='
 USERNAME_PARAM = 'username='
 
 function search(smartURL, app_id) {
-    window.location.href = smartURL.replace('{app_id}', app_id);
+    let full_url = smartURL.replace('{app_id}', app_id);
+
+    fetch(full_url).then((response) => {
+       if (response.ok) {
+           window.location.href = full_url;
+       } else {
+           let app_id_input = document.getElementById('app-id-input');
+           app_id_input.setCustomValidity("Invalid App ID")
+       }
+    });
 }
 
 function initializeSearch(smartContext) {
@@ -30,9 +39,21 @@ function initializeSearch(smartContext) {
 
 
     document.getElementById('search-btn').addEventListener('click', function() {
-        let app_id = document.getElementById('app-id-input').innerText.trim();
+        let app_id_input = document.getElementById('app-id-input');
+        if (!app_id_input.checkValidity()) {
+            return;
+        }
+        let app_id = app_id_input.innerText.trim();
+
         search(smartAppUrl, app_id)
     });
+
+    document.getElementById('app-id-input')
+        .addEventListener("keyup", function(event) {
+            if (event.code === 'Enter') {
+                document.getElementById("search-btn").click();
+            }
+        });
 }
 
 let myApp = {};

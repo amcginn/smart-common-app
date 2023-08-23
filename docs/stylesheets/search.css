@@ -1,0 +1,74 @@
+* { color:#161513; border-radius:6px; }
+html { height:100%; }
+body {
+    background-color: #ffffff;
+    font: 1em "Open Sans", sans-serif;
+    min-width: 360px;
+    overflow: scroll;
+    height:100%;
+}
+main {
+    width: 80%;
+    min-width: min-content;
+    background-color: #FBF9F8;
+    margin: auto;
+    padding: 1em;
+    min-height: 80vh;
+    height:100%;
+}
+.content {
+    display: flex;
+    margin: 1em auto;
+}
+
+header {
+    margin: auto;
+    width: max-content;
+}
+.card {
+    padding: 1em 2em;
+    display: flex;
+    border: slategrey 1px solid;
+    margin: 0 auto;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #F5F4F2;
+    width: 40%;
+    min-width: min-content;
+    height: 8em;
+    box-shadow: 5px 5px 10px -9px #7A736E,
+    -5px 5px 10px -9px #7A736E;
+}
+.item {
+    display: flex;
+    margin: auto .5em;
+    flex-wrap: wrap;
+    min-height: 2lh;
+    min-width: min-content;
+}
+label {
+    min-width: max-content;
+    font-size: 1.3em;
+    margin: auto 1em auto 0;
+}
+#app-id-input {
+    border: slategrey 2px solid;
+    border-radius: 3px;
+    margin: auto 0;
+    width: 70%;
+    min-width: 32ch;
+}
+input[type='text'] {
+    font-family:"Open Sans", sans-serif;
+    font-size: inherit;
+}
+#search-btn {
+    background-color: #4F5573;
+    padding: .3em 1em;
+    border: lightsteelblue 2px solid;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    min-width: max-content;
+    width: max-content;
+}
