@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html hidden lang="en">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SMART Common App Launch</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/search.css">
     <script src="dist/fhir-client-v2.js"></script>
     <script src="javascript/search.js"></script>
+    <link rel='stylesheet' type='text/css' href='stylesheets/cerner-smart-embeddable-lib-1.5.0.min.css'>
   </head>
   <body>
     <main>
       <header>
-        <h2>Launch SMART app by ID</h2>
+        <h1>Launch SMART app by ID</h1>
       </header>
       <div class="content">
         <div class="card">
@@ -18,7 +20,7 @@
             <input id="app-id-input" type="text" required>
           </div>
           <div class="item">
-            <div id="search-btn" class="">
+            <div id="search-btn" tabindex="0" class="">
               Launch app
             </div>
           </div>
@@ -26,6 +28,6 @@
       </div>
     </main>
     <script type="text/javascript" src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/cerner/cerner-smart-embeddable-lib@v1.5.0/dist/js/cerner-smart-embeddable-lib-1.5.0.min.js"></script>
+    <script src="javascript/cerner-smart-embeddable-lib-1.5.0.min.js"></script>
   </body>
 </html>
