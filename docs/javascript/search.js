@@ -14,6 +14,7 @@ function search(smartURL, app_id) {
            let app_id_input = document.getElementById('app-id-input');
            app_id_input.setCustomValidity("Invalid App ID");
            app_id_input.reportValidity();
+           app_id_input.setCustomValidity("");
        }
     });
 }
@@ -41,7 +42,10 @@ function initializeSearch(smartContext) {
 
     document.getElementById('search-btn').addEventListener('click', function() {
         let app_id_input = document.getElementById('app-id-input');
-        if (!app_id_input.reportValidity()) {
+        if (!app_id_input.checkValidity()) {
+            app_id_input.setCustomValidity("App ID must be provided");
+            app_id_input.reportValidity();
+            app_id_input.setCustomValidity("");
             return;
         }
         let app_id = app_id_input.value.trim();
