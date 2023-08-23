@@ -12,7 +12,8 @@ function search(smartURL, app_id) {
            window.location.href = full_url;
        } else {
            let app_id_input = document.getElementById('app-id-input');
-           app_id_input.setCustomValidity("Invalid App ID")
+           app_id_input.setCustomValidity("Invalid App ID");
+           app_id_input.reportValidity();
        }
     });
 }
@@ -40,7 +41,7 @@ function initializeSearch(smartContext) {
 
     document.getElementById('search-btn').addEventListener('click', function() {
         let app_id_input = document.getElementById('app-id-input');
-        if (!app_id_input.checkValidity()) {
+        if (!app_id_input.reportValidity()) {
             return;
         }
         let app_id = app_id_input.value.trim();
