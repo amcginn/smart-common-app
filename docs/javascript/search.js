@@ -43,7 +43,7 @@ function initializeSearch(smartContext) {
         if (!app_id_input.checkValidity()) {
             return;
         }
-        let app_id = app_id_input.innerText.trim();
+        let app_id = app_id_input.value.trim();
 
         search(smartAppUrl, app_id)
     });
