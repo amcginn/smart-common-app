@@ -56,10 +56,12 @@ function initializeSearch(smartContext) {
         });
 }
 
-let myApp = {};
-FHIR.oauth2.ready()
-.then(function(client){
-    myApp.smart = client;
+window.addEventListener('load', function() {
+    let myApp = {};
+    FHIR.oauth2.ready()
+        .then(function(client){
+            myApp.smart = client;
 
-    window.addEventListener('load', () => initializeSearch(myApp.smart));
+            initializeSearch(myApp.smart);
+        });
 });
